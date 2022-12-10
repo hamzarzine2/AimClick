@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 let radius = 20;
-let color ="#ed2553";
+let color = '#ed2553';
 let canvas;
 let widthCanvas;
 let heightCanvas;
@@ -29,14 +29,14 @@ function setSizeCanvas() {
 function drawOneFrame() {
   clearFrame();
   setSizeCanvas();
-  drawRectanglesAtRandomLocations();
+  drawCircle();
 }
 
 function clearFrame() {
   canvasContext.clearRect(0, 0, widthCanvas, heightCanvas);
 }
 
-function drawRectanglesAtRandomLocations() {
+function drawCircle() {
   canvasContext.fillStyle = color;
   x = Math.random() * (widthCanvas - radius * 2);
   y = Math.random() * (heightCanvas - radius * 2);
@@ -74,17 +74,11 @@ function initScore() {
 function updateSize(size) {
   radius = parseInt(size, 10);
   setCanvasContextAndSize();
-
 }
 
-function updateColor(colorAdd){  
-  color=colorAdd;
+function updateColor(colorAdd) {
+  color = colorAdd;
   setCanvasContextAndSize();
-
-  
-  
 }
 
- 
-
-export { drawOneFrame, setCanvasContextAndSize, score, initScore, updateSize,updateColor};
+export { drawOneFrame, setCanvasContextAndSize, score, initScore, updateSize, updateColor };

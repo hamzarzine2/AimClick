@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-constant-condition */
 /* eslint-disable import/no-unresolved */
 // changes
@@ -46,12 +47,12 @@ function renderPlayZone() {
 
   const divTimer = document.createElement('div');
   divTimer.id = 'timer';
-  divTimer.className = 'divBorder';
+  divTimer.className = 'divBorder infoGame';
   divTimer.innerHTML = `<p> Time left : ${time} second  </p>`;
 
   const divScore = document.createElement('div');
   divScore.id = 'score';
-  divScore.className = 'divBorder';
+  divScore.className = 'divBorder infoGame';
   divScore.innerHTML = ' <p> your score : 0 </p>';
 
   divInformation.appendChild(divTimer);
@@ -85,7 +86,7 @@ function startPersonnalisation() {
   buttonPerso.type = 'submit';
   buttonPerso.id = 'persoButton';
   buttonPerso.className = 'buttonClass btn btn-primary';
-  buttonPerso.innerHTML = '<p> personnalisé </p> ';
+  buttonPerso.innerHTML = '<p> personnalisation </p> ';
 
   if (getTypeGame() !== 'quick') {
     buttonPerso.style.display = 'none';
@@ -114,13 +115,12 @@ async function saveScore() {
   const options = {
     method: 'POST',
     body: JSON.stringify({
-      user : user.id,
+      user: user.id,
       score: scoreToAdd,
     }),
     headers: {
       'Content-Type': 'application/json',
-      Authorization: user.token
-
+      Authorization: user.token,
     },
   };
 
@@ -133,7 +133,6 @@ async function saveScore() {
 
   Navigate('/');
 }
-
 
 function startGame(e) {
   e.preventDefault();
@@ -209,8 +208,23 @@ function buttonAnime() {
   gsap.from('#buttonContainer', {
     opacity: 0,
     y: 600,
-    duration: 3,
+    duration: 2,
   });
+
+  gsap.from('#score', {
+    opacity: 0,
+    x: 300,
+    duration: 2,
+  });
+
+  gsap.from('#timer', {
+    opacity: 0,
+    x: -100,
+    duration: 2,
+  });
+
+
+
 }
 
 export { GamePage, intervalId, saveScore };

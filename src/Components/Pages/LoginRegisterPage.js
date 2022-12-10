@@ -1,26 +1,28 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
-import $ from "jquery";
-import { getRememberMe, setAuthenticatedUser, setRememberMe } from '../../utils/auths';
+import $ from 'jquery';
+import {  setAuthenticatedUser } from '../../utils/auths';
 import { clearPage, renderPageTitle } from '../../utils/render';
 import Navbar from '../Navbar/Navbar';
 import Navigate from '../Router/Navigate';
+import {addModal,showLoad} from '../Popup/LoadingPopUp';
 
 const LoginPage = () => {
   clearPage();
   renderPageTitle('Login');
-  renderRegisterForm(); 
+  addModal();
+  renderRegisterForm();
 };
 
 function renderRegisterForm() {
   const main = document.querySelector('main');
-// eslint-disable-next-line spaced-comment
-/***************************************************************************************
-*    Author: Nothing4us
-*    Availability: https://codepen.io/nothing4us/pen/JjZpBXL
-*
-************************************************************************************** */
-  main.innerHTML=`
+  // eslint-disable-next-line spaced-comment
+  /***************************************************************************************
+   *    Author: Nothing4us
+   *    Availability: https://codepen.io/nothing4us/pen/JjZpBXL
+   *
+   ************************************************************************************** */
+  main.innerHTML += `
   <div class="pen-title">
   
   </div>
@@ -39,6 +41,8 @@ function renderRegisterForm() {
           <input type="password" id="passwordLogin" required="required"/>
           <label for="password">Password</label>
           <div class="bar"></div>
+        </div>
+        <div class ="errorDiv" id="errorLogin">
         </div>
         <div class="button-container">
           <button id="loginButton"><span>Go</span></button>
@@ -66,6 +70,8 @@ function renderRegisterForm() {
           <label for="password">Repeat Password</label>
           <div class="bar"></div>
         </div>
+        <div class ="errorDiv input-container" id="errorRegister">
+        </div>
         <div class="button-container">
           <button id="registerButton"><span>Next</span></button>
         </div>
@@ -73,31 +79,29 @@ function renderRegisterForm() {
     </div>
   </div>
   
-  `
+  `;
   $('.toggle').on('click', () => {
     $('.container').stop().addClass('active');
   });
-  
+
   $('.close').on('click', () => {
     $('.container').stop().removeClass('active');
   });
 
-  const loginButton = document.querySelector("#loginButton");
-  const registerButton=document.querySelector("#registerButton")
-  loginButton.addEventListener('click',onLogin);
-  registerButton.addEventListener('click',onRegister);
-
+  const loginButton = document.querySelector('#loginButton');
+  const registerButton = document.querySelector('#registerButton');
+  loginButton.addEventListener('click', onLogin);
+  registerButton.addEventListener('click', onRegister);
 }
 
-function onCheckboxClicked(e) {
-  setRememberMe(e.target.checked);
-}
+
 
 async function onLogin(e) {
   e.preventDefault();
+  const errorDiv=document.querySelector("#errorLogin");
+  const loginButton = document.querySelector('#loginButton');
   const username = document.querySelector('#usernameLogin').value;
   const password = document.querySelector('#passwordLogin').value;
-
 
   const options = {
     method: 'POST',
@@ -111,30 +115,36 @@ async function onLogin(e) {
   };
 
   const response = await fetch(`${process.env.API_BASE_URL}/users/login`, options);
+  errorDiv.style.display="";
+  loginButton.innerHTML="<span>LOADING...</span>"
 
-  if (!response.ok) throw new Error(`fetch error : ${response.status} : ${response.statusText}`);
+  if (!response.ok) {
+    errorDiv.innerHTML="<p>password or username wrong</p>"
+    loginButton.innerHTML='<span>Go</span>'
+    return;
+  }
 
   const authenticatedUser = await response.json();
 
-  console.log('Authenticated user : ', authenticatedUser);
-
+  errorDiv.style.display="none";
   setAuthenticatedUser(authenticatedUser);
-  
+
   Navbar();
 
   Navigate('/');
 }
 
-
 async function onRegister(e) {
   e.preventDefault();
+  const errorDiv=document.querySelector("#errorRegister");
+  const registerButton = document.querySelector('#registerButton');
 
   const username = document.querySelector('#usernameRegister').value;
   const password = document.querySelector('#passwordRegister').value;
-  const passwordRepeat=document.querySelector('#repeatPassword').value;
+  const passwordRepeat = document.querySelector('#repeatPassword').value;
 
-  if(password !== passwordRepeat){
-    console.log('pas bon mdp');
+  if (password.length<8) {
+    errorDiv.innerHTML='<p>Your Password should be at least 8 characters</p>'
     return;
   }
 
@@ -147,15 +157,26 @@ async function onRegister(e) {
     headers: {
       'Content-Type': 'application/json',
     },
-  };
+  }
 
   const response = await fetch(`${process.env.API_BASE_URL}/users/register`, options);
 
-  if (!response.ok) throw new Error(`fetch error : ${response.status} : ${response.statusText}`);
-
+  registerButton.innerHTML="<span>LOADING...</span>"
+  console.log(password !== passwordRepeat);
+  if (password !== passwordRepeat) {
+    errorDiv.innerHTML='<p>Password wrong</p>'
+    registerButton.innerHTML="<span>GO</span>"
+    return;
+  }
+  if (!response.ok) {
+    errorDiv.innerHTML='<p>Username already in use</p>'
+    registerButton.innerHTML="<span>GO</span>"
+    return;
+  }
+  
   const authenticatedUser = await response.json();
 
-  console.log('Newly registered & authenticated user : ', authenticatedUser);
+  errorDiv.style.display="none";
 
   setAuthenticatedUser(authenticatedUser);
 
@@ -163,6 +184,5 @@ async function onRegister(e) {
 
   Navigate('/');
 }
-
 
 export default LoginPage;

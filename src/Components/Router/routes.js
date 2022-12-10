@@ -5,6 +5,7 @@ import { GamePage } from '../Pages/GamePage';
 import TutorielPage from '../Pages/TutorielPage';
 import TrollGamePage from '../Pages/TrollGamePage';
 import FriendPage from '../Pages/FriendPage';
+import UserPage from '../Pages/UserPage';
 
 const routes = {
   '/': HomePage,
@@ -15,6 +16,7 @@ const routes = {
   '/tutoriel': TutorielPage,
   '/troll': TrollGamePage,
   '/friend': FriendPage,
+  '/user': UserPage,
 };
 
 export default routes;
