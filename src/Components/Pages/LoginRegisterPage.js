@@ -114,7 +114,7 @@ async function onLogin(e) {
     },
   };
   loginButton.innerHTML="<span>LOADING...</span>"
-
+  console.log('"teeteztaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
   const response = await fetch(`${process.env.API_BASE_URL}/users/login`, options);
   errorDiv.style.display="";
 
