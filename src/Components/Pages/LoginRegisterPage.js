@@ -113,10 +113,10 @@ async function onLogin(e) {
       'Content-Type': 'application/json',
     },
   };
+  loginButton.innerHTML="<span>LOADING...</span>"
 
   const response = await fetch(`${process.env.API_BASE_URL}/users/login`, options);
   errorDiv.style.display="";
-  loginButton.innerHTML="<span>LOADING...</span>"
 
   if (!response.ok) {
     errorDiv.innerHTML="<p>password or username wrong</p>"
@@ -157,12 +157,12 @@ async function onRegister(e) {
     headers: {
       'Content-Type': 'application/json',
     },
-  }
+  };
+
+  registerButton.innerHTML="<span>LOADING...</span>"
 
   const response = await fetch(`${process.env.API_BASE_URL}/users/register`, options);
 
-  registerButton.innerHTML="<span>LOADING...</span>"
-  console.log(password !== passwordRepeat);
   if (password !== passwordRepeat) {
     errorDiv.innerHTML='<p>Password wrong</p>'
     registerButton.innerHTML="<span>GO</span>"
