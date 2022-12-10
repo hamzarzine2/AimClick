@@ -6,6 +6,11 @@ import { getTypeGame } from '../../utils/games';
 
 let time = 10;
 
+/*
+**function that update the timer while the time is different from 0
+** if time = 0 function change the gamediv and stop the setinterval
+**if game is ranked add the save button and the eventlistenener
+*/
 function timerUpdate() {
   if (time === 0) {
     const divCanvas = document.querySelector('#gameDiv');
@@ -38,27 +43,33 @@ function timerUpdate() {
   divTimer.innerHTML = `<p> Time left : ${time} second  </p>`;
 }
 
+/*
+**function that show the button div hidden 
+*/
 function showDivButton() {
   const buttonContainer = document.querySelector('#buttonContainer');
   buttonContainer.style.display = '';
   const buttonStart = document.querySelector('#startButton');
   buttonStart.innerHTML = 'Restart';
 }
+
 /*
-function hideAnimation(){
-  const divAnimation = document.getElementById('animationDiv');
-  divAnimation.style.display="none"
-
-}
+**function that stop the interval call
 */
-
 function clearTime() {
   clearInterval(intervalId);
 }
+
+/*
+**function that init the timer to 0
+*/
 function initTimer() {
   time = 10;
 }
 
+/*
+**function that update the time 
+*/
 function updateTime(addTime) {
   time = addTime;
   const timerDiv = document.querySelector('#timer');

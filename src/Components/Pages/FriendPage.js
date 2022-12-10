@@ -10,6 +10,9 @@ const FriendPage = () => {
   user = getAuthenticatedUser();
 };
 
+/*
+**function that display the search option and add the event listener to display all friend and searched user
+*/
 function displaySearch() {
   const userDiv = document.createElement('div');
   userDiv.id = 'divUsers';
@@ -32,6 +35,11 @@ function displaySearch() {
   buttonFriends.addEventListener('click', displayFriend);
 }
 
+/*
+**on search click
+**function that search users from the input
+**return an array of found users
+*/
 async function search() {
   const input = document.querySelector('#searchInput').value;
 
@@ -50,22 +58,30 @@ async function search() {
   return users;
 }
 
+/*
+**function that display the found users in the search method
+*/
 async function displayUser() {
   const users = await search();
-
   await userAsDiv(users);
 }
 
+/*
+**function that display all the user friends
+*/
 async function displayFriend() {
   const friend = await getUserFriends();
   await userAsDiv(friend);
 }
 
+/*
+**display users as a div 
+*/
 async function userAsDiv(users) {
   const divUsers = document.querySelector('#divUsers');
   divUsers.style.display = '';
 
-  let ligne = "<h1>USER</h1><br> <div id='gridContainer'>";
+  let ligne = "<h1 class ='searchTitle'>USER</h1><br> <div id='gridContainer'>";
   const userFriends = await getUserFriends();
   if (users.length > 0) {
     users.forEach((element) => {
@@ -84,7 +100,7 @@ async function userAsDiv(users) {
       ligne += '</div>';
     });
   } else {
-    ligne += ' <p> NO USER FOUND </p> ';
+    ligne += ' <p class="noUser"> NO USER FOUND </p> ';
   }
   ligne += '</div>';
 
@@ -96,6 +112,9 @@ async function userAsDiv(users) {
   });
 }
 
+/*
+**function that add an user as a friend an display all user friends as response 
+*/
 async function addFriend(e) {
   e.preventDefault();
 
@@ -120,6 +139,10 @@ async function addFriend(e) {
   displayFriend();
 }
 
+/*
+**function that get all the users friends
+** return an array of users
+*/
 async function getUserFriends() {
   const options = {
     headers: {

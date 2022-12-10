@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-constant-condition */
 /* eslint-disable import/no-unresolved */
@@ -16,7 +17,6 @@ import {
   updateColor,
   score,
 } from '../Game/FormSpawner';
-// eslint-disable-next-line import/no-cycle
 import { timerUpdate, time, updateTime, initTimer, clearTime } from '../Game/Timer';
 import { getTypeGame } from '../../utils/games';
 import Navigate from '../Router/Navigate';
@@ -38,6 +38,9 @@ const GamePage = () => {
   buttonAnime();
 };
 
+/*
+**function that add all the div at the loading of the page
+*/
 function renderPlayZone() {
   const divGamePage = document.createElement('div');
   divGamePage.id = 'gamePageDiv';
@@ -69,6 +72,9 @@ function renderPlayZone() {
   main.appendChild(divGamePage);
 }
 
+/*
+**function that add the different button to considering the different type of games
+*/
 function startPersonnalisation() {
   const divGamePage = document.getElementById('gamePageDiv');
   const buttonContainer = document.createElement('div');
@@ -108,6 +114,9 @@ function startPersonnalisation() {
   divGamePage.appendChild(buttonContainer);
 }
 
+/*
+**function that call the api to save a score in competition game
+*/
 async function saveScore() {
   const user = getAuthenticatedUser();
   const scoreToAdd = score;
@@ -134,6 +143,9 @@ async function saveScore() {
   Navigate('/');
 }
 
+/*
+**function that start the game and call all the method necessary
+*/
 function startGame(e) {
   e.preventDefault();
   if (time === 0) {
@@ -146,17 +158,26 @@ function startGame(e) {
   intervalId = setInterval(timerUpdate, 1000);
 }
 
+/*
+**function that hide the button div
+*/
 function hideButton() {
   const buttonContainer = document.querySelector('#buttonContainer');
   buttonContainer.style.display = 'none';
 }
 
+/*
+**function that set the canvas 
+*/
 function initPlayGround() {
   const divCanvas = document.querySelector('#gameDiv');
   divCanvas.innerHTML = '<canvas id="gameCanvas"/>';
   setCanvasContextAndSize();
 }
 
+/*
+**function that set personalisation option 
+*/
 function displayPerso(e) {
   e.preventDefault();
   const divPerso = document.querySelector('#divPerso');
@@ -188,6 +209,9 @@ function displayPerso(e) {
   }
 }
 
+/*
+**function that update the personnalisation
+*/
 function personnalisation(e) {
   e.preventDefault();
   const divPerso = document.querySelector('#divPerso');
@@ -204,6 +228,9 @@ function personnalisation(e) {
   }
 }
 
+/*
+**function that animate the div comming
+*/
 function buttonAnime() {
   gsap.from('#buttonContainer', {
     opacity: 0,

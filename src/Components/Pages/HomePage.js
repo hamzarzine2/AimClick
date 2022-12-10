@@ -22,7 +22,7 @@ const divScoreTable = document.createElement('div');
 const HomePage = async () => {
   clearPage();
   getHomePage();
-  buttonAnime();
+  animation();
 };
 
 async function getHomePage() {
@@ -181,16 +181,23 @@ function getScoreTable(playersScore) {
   return scoreTable;
 }
 
-function buttonAnime() {
+
+/*
+**function that do the button animation in the home page no connected
+*/
+function animation() { 
+
   gsap.from('#divHome', {
-    opacity: 5,
-    y: 600,
-    duration: 1,
+    opacity: 0.1,
+    x: 600,
+    duration: 2,
   });
   gsap.from('#divHome2', {
-    opacity: 5,
-    y: 600,
-    duration: 1,
+    opacity: 0.1,
+    x: -200,
+    duration: 2,
   });
+
+ 
 }
 export default HomePage;

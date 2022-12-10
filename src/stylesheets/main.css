@@ -315,6 +315,19 @@ body{
   height: auto;
 }
 
+.searchTitle{
+  color: #ed2553;
+  font-size: XX-large;
+  font-weight:900;
+  text-align: center;
+}
+
+.noUser{
+  color: #700921;
+  font-size: X-large;
+  font-weight:900;
+  text-align: center;
+}
 /*login*/
 
 .errorDiv p{
