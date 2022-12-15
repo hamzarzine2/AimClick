@@ -37,6 +37,7 @@ const GamePage = () => {
   initScore();
   initPlayGround();
   updateSize(20);
+  updateColor('#ed2553');
   buttonAnime();
 };
 
