@@ -1,4 +1,7 @@
 /* eslint-disable no-console */
+
+import { getTypeGame } from "../../utils/games";
+
 /* eslint-disable no-unused-vars */
 let radius = 20;
 let color = '#ed2553';
@@ -8,6 +11,7 @@ let heightCanvas;
 let canvasContext;
 let x;
 let y;
+let interval = 0;
 // eslint-disable-next-line import/no-mutable-exports
 let score = 0;
 
@@ -18,6 +22,7 @@ function setCanvasContextAndSize() {
   canvas = document.querySelector('#gameCanvas');
   canvas.addEventListener('click', onClickForm);
   canvasContext = canvas.getContext('2d');
+  if(interval !== 0) clearInterval(interval);
   setSizeCanvas();
 }
 
@@ -75,7 +80,13 @@ function onClickForm(e) {
       (e.clientY <= yPosReal && e.clientY >= yPosReal - radius))
   ) {
     refreshScore();
-    drawOneFrame();
+
+    if (getTypeGame() === 'troll'){
+      drawOneFrameTroll();
+    } else{
+      drawOneFrame();
+    } 
+
   }
 }
 
@@ -103,6 +114,57 @@ function updateSize(size) {
   setCanvasContextAndSize();
 }
 
+// ********* TROLL **************
+
+/**
+ * function to draw random type of circle
+ */
+function drawOneFrameTroll() {
+  clearFrame();
+  setSizeCanvas();
+
+  // eslint-disable-next-line prefer-const
+  let tour = Math.round(Math.random() * ((4 - 1) + 1));
+  if(interval !== 0) clearInterval(interval); 
+  switch (tour) {
+    case 1: drawCircle();
+      break;
+    case 2: drawMultipleCircle();
+      break;
+    case 3: fastClick();
+      break;
+    case 4: changeSizeClick();
+      break;
+    default: drawCircle();
+  }
+}
+/*
+** function to draw one circle with changed size 1x
+*/
+function changeSizeClick(){
+  updateSize(10);
+  drawCircle();
+  radius = 20;
+}
+
+/**
+ * function wich teleport the circle every 0.7 second
+ */
+function fastClick() {
+  drawOneFrame()
+  interval = setInterval(drawOneFrame,700);
+}
+
+/**
+ * function to draw 3 circle but only one is available
+ */
+function drawMultipleCircle() {
+  // eslint-disable-next-line no-plusplus
+  for (let i = 0; i < 3; i++) {
+    drawCircle();
+  }
+}
+
 /*
 **function that set color 
 */
@@ -111,4 +173,4 @@ function updateColor(colorAdd) {
   setCanvasContextAndSize();
 }
 
-export { drawOneFrame, setCanvasContextAndSize, score, initScore, updateSize, updateColor };
+export { drawOneFrame, setCanvasContextAndSize, score, onClickForm, initScore, updateSize, updateColor, drawOneFrameTroll };

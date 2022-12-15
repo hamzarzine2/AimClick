@@ -1,8 +1,10 @@
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-unresolved */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 import $ from 'jquery';
 import {  setAuthenticatedUser } from '../../utils/auths';
-import { clearPage, renderPageTitle } from '../../utils/render';
+import { clearPage, makeOverflowAuto } from '../../utils/render';
 import Navbar from '../Navbar/Navbar';
 import Navigate from '../Router/Navigate';
 
@@ -16,6 +18,8 @@ const LoginPage = () => {
 */
 function renderRegisterForm() {
   const main = document.querySelector('main');
+  const body = document.querySelector('body');
+  body.style.overflow='hidden';
   // eslint-disable-next-line spaced-comment
   /***************************************************************************************
    *    Author: Nothing4us
@@ -23,9 +27,7 @@ function renderRegisterForm() {
    *
    ************************************************************************************** */
   main.innerHTML += `
-  <div class="pen-title">
   
-  </div>
   <div class="rerun"><a href="">Reload</a></div>
   <div class="container">
     <div class="card"></div>
@@ -70,6 +72,10 @@ function renderRegisterForm() {
           <label for="password">Repeat Password</label>
           <div class="bar"></div>
         </div>
+        <div class="input-container" id="allow">
+            <p id="allowText" class ="noUser">Allow us to use your informations</p> 
+            <input type="checkbox" id="allowCheck" name="allow" value="allow">
+        </div>
         <div class ="errorDiv input-container" id="errorRegister">
         </div>
         <div class="button-container">
@@ -82,10 +88,12 @@ function renderRegisterForm() {
   `;
   $('.toggle').on('click', () => {
     $('.container').stop().addClass('active');
+    makeOverflowAuto();
   });
 
   $('.close').on('click', () => {
     $('.container').stop().removeClass('active');
+    body.style.overflow='hidden';
   });
 
   const loginButton = document.querySelector('#loginButton');
@@ -119,6 +127,7 @@ async function onLogin(e) {
 
   loginButton.innerHTML="<span>LOADING...</span>"
   const response = await fetch(`${process.env.API_BASE_URL}/users/login`, options);
+  // showLoad();
   errorDiv.style.display="";
 
   if (!response.ok) {

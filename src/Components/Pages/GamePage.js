@@ -8,7 +8,7 @@
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 import { gsap } from 'gsap';
-import { clearPage } from '../../utils/render';
+import { clearPage,makeOverflowAuto } from '../../utils/render';
 import {
   drawOneFrame,
   setCanvasContextAndSize,
@@ -16,6 +16,7 @@ import {
   updateSize,
   updateColor,
   score,
+  drawOneFrameTroll,
 } from '../Game/FormSpawner';
 import { timerUpdate, time, updateTime, initTimer, clearTime } from '../Game/Timer';
 import { getTypeGame } from '../../utils/games';
@@ -27,6 +28,7 @@ let intervalId = 0;
 
 const GamePage = () => {
   clearPage();
+  makeOverflowAuto();
   clearTime();
   initTimer();
   renderPlayZone();
@@ -34,7 +36,7 @@ const GamePage = () => {
   startPersonnalisation();
   initScore();
   initPlayGround();
-
+  updateSize(20);
   buttonAnime();
 };
 
@@ -92,7 +94,7 @@ function startPersonnalisation() {
   buttonPerso.type = 'submit';
   buttonPerso.id = 'persoButton';
   buttonPerso.className = 'buttonClass btn btn-primary';
-  buttonPerso.innerHTML = '<p> personnalisation </p> ';
+  buttonPerso.innerHTML = '<p> Customization </p> ';
 
   if (getTypeGame() !== 'quick') {
     buttonPerso.style.display = 'none';
@@ -154,7 +156,10 @@ function startGame(e) {
   initScore();
   initPlayGround();
   hideButton();
-  drawOneFrame();
+  if(getTypeGame() === 'troll'){
+    drawOneFrameTroll();
+  }else drawOneFrame();
+  
   intervalId = setInterval(timerUpdate, 1000);
 }
 
@@ -191,11 +196,11 @@ function displayPerso(e) {
       </div>  
       <div class="form-group">
         <label for="size">Size</label>
-        <input type="number" class="form-control" id="size" >
+        <input type="number" class="form-control" id="size"  step="5">
       </div>
       <div class="form-group">
         <label for="color">Color</label>
-        <input type="color" class="form-control" id="color" >
+        <input type="color" class="form-control" id="color" value="#ed2553">
       </div>
       <button type="submit" class="buttonClass btn btn-primary">Submit</button>
     </form>
@@ -217,15 +222,18 @@ function personnalisation(e) {
   const divPerso = document.querySelector('#divPerso');
   divPerso.style.display = 'none';
 
-  const t = document.querySelector('#time').value;
-  const m = document.querySelector('#size').value;
+  const newTime = document.querySelector('#time').value;
+  const newSize = document.querySelector('#size').value;
   const c = document.querySelector('#color').value;
 
-  if (t !== '' && m !== '') {
-    updateTime(t);
-    updateSize(m);
-    updateColor(c);
+  if (newTime !== '' ) {
+    updateTime(newTime);
+  } 
+  if( newSize !== ''){
+      updateSize(newSize);
+
   }
+    updateColor(c);
 }
 
 /*

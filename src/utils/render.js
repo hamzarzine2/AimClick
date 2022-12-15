@@ -11,4 +11,8 @@ const renderPageTitle = (title) => {
   main.appendChild(pageTitle);
 };
 
-export { clearPage, renderPageTitle };
+function makeOverflowAuto() {
+  const body=document.querySelector("body")
+  body.style.overflow = 'auto';
+}
+export { clearPage, renderPageTitle ,makeOverflowAuto};

@@ -1,4 +1,5 @@
-import { clearPage } from '../../utils/render';
+/* eslint-disable no-console */
+import { clearPage,makeOverflowAuto } from '../../utils/render';
 import { getAuthenticatedUser } from '../../utils/auths';
 
 const main = document.querySelector('main');
@@ -6,6 +7,7 @@ let user = null;
 
 const FriendPage = () => {
   clearPage();
+  makeOverflowAuto()
   displaySearch();
   user = getAuthenticatedUser();
 };
@@ -55,6 +57,7 @@ async function search() {
   );
   if (!response.ok) throw new Error(`fetch error : ${response.status} : ${response.statusText}`);
   const users = await response.json();
+  console.log("ppppppppppppppppppppppppppppp",users.level);
   return users;
 }
 

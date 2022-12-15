@@ -1,20 +1,22 @@
 /*all pages*/
 
-body{
-  background: rgb(238,174,202);
-  background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+body {
+  background: rgb(238, 174, 202);
+  background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
   background-size: 400% 400%;
   animation: anim 9s infinite ease-in-out;
 }
 
 @keyframes anim {
-  0%{
+  0% {
     background-position: 0 50%;
   }
-  50%{
+
+  50% {
     background-position: 100% 50%;
   }
-  100%{
+
+  100% {
     background-position: 0 50%;
   }
 }
@@ -55,7 +57,7 @@ body{
   align-items: center;
 }
 
-.infoGame p{
+.infoGame p {
   color: #ed2553;
   font-size: x-large;
   font-weight: bold;
@@ -64,6 +66,7 @@ body{
 #buttonDiv button {
   margin: 5px;
 }
+
 #startButton p {
   font-size: large;
   margin: 5px;
@@ -75,7 +78,7 @@ body{
 }
 
 
-#divEndGameDisplay{
+#divEndGameDisplay {
   width: auto;
   height: 400px;
   margin: auto auto;
@@ -83,7 +86,7 @@ body{
   position: relative;
 }
 
-#save{
+#save {
   display: flex;
   justify-content: center;
 }
@@ -132,98 +135,147 @@ body{
 /*****End HomePage part********/
 
 /******UserPage part***********/
-/*
-#divUser{
-  margin: auto;
-  display: flex;
-  font-size: larger;
-  color: #212121;
-  font-weight: bolder;
-  background-color: #ed2553;
-  width: 75%;
-  justify-content: center;
-  border: 2px solid black;
-  border-radius: 30px;
-}
-
-#divImg{
-  float: left;
-  display: flex;
-  border: 2px solid black;
-  width: 9.6%;
-  height: 150px;
-
-}
-
-#divLevXp{
-  border: 2px solid black;
-  height: 300px;
-  
-}
-
-#divLevNum{
-  margin-left: auto;
-  float: left;
-  display: flex;
-  font-size: larger;
-  color: #212121;
-  font-weight: bolder;
-  background-color: #ed2553;
-  width: 25%;
-  border: 2px solid black;
-  justify-content: center;
-  border-radius: 30px;
-  
-}
-
-#divXp{
-  float: left;
-  margin-left: 100px;
-  display: flex;
-  font-size: larger;
-  color: #212121;
-  font-weight: bolder;
-  background-color: #ed2553;
-  width: 25%;
-  border: 2px solid black;
-  justify-content: center;
-  border-radius: 30px;
-  
-}
-
-#divXp2{
-  
-  display: flex;
-  font-size: larger;
-  color: #212121;
-  font-weight: bolder;
-  background-color: #ed2553;
-  width: 25%;
-  border: 2px solid black;
-  justify-content: center;
-  border-radius: 30px;
-  
-}
-*/
 
 .divUser {
-  border: 2px solid black;
   display: flex;
-  flex-direction: row;
+  width: auto;
+  justify-content: center;
+  border: 3px solid black;
+  background-color: #fd6186;
+  border-radius: 10px 10px 10px 10px;
+  align-items: center;
 }
 
 .divProfil {
-  border: 2px solid black;
   margin: 20px;
+  display: flex;
+  float: left;
+}
+
+#image{
+  background-image: url("../img/profil.jpg");
+  background-position: center; 
+  background-repeat: no-repeat;
+  background-size: cover; 
+  width: 15%;
+
+}
+
+
+
+.divUser2 {
+  margin: 20px;
+  width: 70%;
+  display: flex;
+
 }
 
 .divProfil2 {
   border: 3px solid black;
   margin: 20px;
-  width: 1000px;
+  width: 100%;
+  height: 200px;
+  align-items: center;
+  justify-content: center;
+  color: #00539CFF;
+  font-size: 25px;
+  display: flex;
   text-align: center;
-  background-color: yellow;
+  border: solid;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: antiquewhite;
+  box-shadow: rgb(237, 38, 85, 0.4) 5px 5px, rgba(237, 38, 85, 0.3) 10px 10px,
+    rgba(237, 38, 85, 0.2) 15px 15px, rgba(237, 38, 85, 0.1) 20px 20px,
+    rgba(237, 38, 85, 0.05) 25px 25px;
+}
+
+#divNiv {
+  border: 3px solid black;
+  margin: 20px;
+  width: 100%;
+  height: 200px;
+  align-items: center;
+  justify-content: center;
+  color: #00539CFF;
+  font-size: 30px;
+  display: flex;
+  text-align: center;
+  border: solid;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: antiquewhite;
+  box-shadow: rgb(237, 38, 85, 0.4) 5px 5px, rgba(237, 38, 85, 0.3) 10px 10px,
+    rgba(237, 38, 85, 0.2) 15px 15px, rgba(237, 38, 85, 0.1) 20px 20px,
+    rgba(237, 38, 85, 0.05) 25px 25px;
+}
+
+#divNumber {
+  font-size: 90px;
+  font-style: italic;
+  color: #00539CFF;
+  display: flex;
+}
+
+#divXp {
+  margin: auto;
+  width: 500px;
+  height: 200px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  color: #00539CFF;
+  font-size: larger;
+  
+
+}
+
+#divLigne {
+  border: 3px solid black;
+  margin: 20px;
+  width: 100%;
+  text-align: center;
+  background-color: #fd6186;
   border-radius: 10px 10px 10px 10px;
+  justify-content: center;
+  color: #00539CFF;
+  font-size: larger;
+  font-weight: bolder;
+  display: flex;
+}
+
+#divPreviousNext {
+  display: flex;
+  margin: 20px;
+  border: 0px solid black;
+  justify-content: center;
+
+}
+
+#btnBefore {
+  font-size: large;
+  margin: 5px;
+}
+
+#btnAfter {
+  font-size: large;
+  margin: 5px;
+}
+
+#containerGamesInfo {
+  display: grid;
+}
+
+@media (min-width: 600px) {
+  .cards {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 /******End UserPage part***********/
@@ -232,6 +284,7 @@ body{
   width: 100%;
   height: 100%;
 }
+
 .buttonClass {
   margin: 5px;
   background: transparent;
@@ -264,15 +317,16 @@ body{
   justify-content: center;
 }
 
-#divTutorial {
+#divEndGameDisplay {
+  display: table;
+  margin: auto;
+  height: 200%;
+}
+
+#divEndGameDisplay div {
   display: flex;
-  width: 60%;
-  margin-left: 5%;
-  margin-top: 4%;
-  background-color: rgb(130, 196, 253);
-  border-radius: 5%;
-  border: solid;
-  border-color: rgb(6, 135, 248);
+  justify-content: center;
+  align-items: center;
 }
 
 /* search PAGE */
@@ -285,6 +339,7 @@ body{
 #searchInput {
   border: solid rgb(237, 38, 85);
 }
+
 #friendButton button {
   display: block;
   margin: 5px auto;
@@ -315,36 +370,69 @@ body{
   height: auto;
 }
 
-.searchTitle{
+/*Tutorial Page*/
+#divTuto {
+  margin-top: 5%;
+  display: flex;
+  width: 100%;
+  color: #ed2553;
+}
+
+#divTuto2 {
+  margin: auto;
+  margin-left: 3%;
+  display: flex;
+  width: 50%;
+  font-size: x-large;
+  font-style: bold;
+  font-weight: 700;
+}
+
+#gif {
+  border: solid;
+  border-radius: 5%;
+}
+
+.searchTitle {
   color: #ed2553;
   font-size: XX-large;
-  font-weight:900;
+  font-weight: 900;
   text-align: center;
 }
 
-.noUser{
+.noUser {
   color: #700921;
   font-size: X-large;
-  font-weight:900;
+  font-weight: 900;
   text-align: center;
 }
+
 /*login*/
 
-.errorDiv p{
+.errorDiv p {
   text-align: center;
-  font-size:x-large;
-  margin: 10px;
+  font-size: larger;
 }
 
-#errorLogin{
+#errorLogin {
   color: red;
 }
-#errorRegister{
+
+#errorRegister {
   color: rgb(0, 0, 0);
 }
 
+#allow{
+  height: 10px;
+}
+#allowCheck{
+  height: 30px;
+}
 
-
+#allowText{
+  font-size: larger;
+  height: 10px;
+}
 /***************************************************************************************
 *    Author: Nothing4us
 *    Availability:https://codepen.io/nothing4us/pen/JjZpBXL
@@ -356,7 +444,11 @@ body {
   font-size: 14px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow: auto;
 }
+
+
+
 
 /* Pen Title */
 .pen-title {
@@ -364,17 +456,21 @@ body {
   text-align: center;
   letter-spacing: 2px;
 }
+
 .pen-title h1 {
   margin: 0 0 20px;
   font-size: 48px;
   font-weight: 300;
 }
+
 .pen-title span {
   font-size: 12px;
 }
+
 .pen-title span .fa {
   color: #ed2553;
 }
+
 .pen-title span a {
   color: #ed2553;
   font-weight: 600;
@@ -386,6 +482,7 @@ body {
   margin: 0 0 30px;
   text-align: center;
 }
+
 .rerun a {
   cursor: pointer;
   display: inline-block;
@@ -397,6 +494,7 @@ body {
   text-decoration: none;
   transition: 0.3s ease;
 }
+
 .rerun a:hover {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
@@ -416,10 +514,12 @@ body {
   color: #ffffff;
   text-align: center;
 }
+
 #codepen i,
 #portfolio i {
   line-height: 56px;
 }
+
 #codepen:hover,
 #portfolio:hover {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
@@ -435,6 +535,7 @@ body {
   -webkit-animation: buttonFadeInUp 1s ease;
   animation: buttonFadeInUp 1s ease;
 }
+
 #portfolio i {
   line-height: 44px;
 }
@@ -446,14 +547,17 @@ body {
   width: 100%;
   margin: 0 auto 100px;
 }
+
 .container.active .card:first-child {
   background: #f2f2f2;
   margin: 0 15px;
 }
+
 .container.active .card:nth-child(2) {
   background: #fafafa;
   margin: 0 10px;
 }
+
 .container.active .card.alt {
   top: 20px;
   right: 0;
@@ -464,6 +568,7 @@ body {
   padding: 60px 0 40px;
   overflow: hidden;
 }
+
 .container.active .card.alt .toggle {
   position: absolute;
   top: 40px;
@@ -472,9 +577,11 @@ body {
   transform: scale(10);
   transition: transform 0.3s ease;
 }
+
 .container.active .card.alt .toggle:before {
   content: '';
 }
+
 .container.active .card.alt .title,
 .container.active .card.alt .input-container,
 .container.active .card.alt .button-container {
@@ -483,18 +590,23 @@ body {
   visibility: visible;
   transition: 0.3s ease;
 }
+
 .container.active .card.alt .title {
   transition-delay: 0.3s;
 }
+
 .container.active .card.alt .input-container {
   transition-delay: 0.4s;
 }
+
 .container.active .card.alt .input-container:nth-child(2) {
   transition-delay: 0.5s;
 }
+
 .container.active .card.alt .input-container:nth-child(3) {
   transition-delay: 0.6s;
 }
+
 .container.active .card.alt .button-container {
   transition-delay: 0.7s;
 }
@@ -514,6 +626,7 @@ body {
   /* Footer */
   /* Alt Card */
 }
+
 .card:first-child {
   background: #fafafa;
   height: 10px;
@@ -521,6 +634,7 @@ body {
   margin: 0 10px;
   padding: 0;
 }
+
 .card .title {
   position: relative;
   z-index: 1;
@@ -532,10 +646,12 @@ body {
   font-weight: 600;
   text-transform: uppercase;
 }
+
 .card .input-container {
   position: relative;
   margin: 0 60px 50px;
 }
+
 .card .input-container input {
   outline: none;
   z-index: 1;
@@ -548,18 +664,22 @@ body {
   font-size: 24px;
   font-weight: 400;
 }
-.card .input-container input:focus ~ label {
+
+.card .input-container input:focus~label {
   color: #9d9d9d;
   transform: translate(-12%, -50%) scale(0.75);
 }
-.card .input-container input:focus ~ .bar:before,
-.card .input-container input:focus ~ .bar:after {
+
+.card .input-container input:focus~.bar:before,
+.card .input-container input:focus~.bar:after {
   width: 50%;
 }
-.card .input-container input:valid ~ label {
+
+.card .input-container input:valid~label {
   color: #9d9d9d;
   transform: translate(-12%, -50%) scale(0.75);
 }
+
 .card .input-container label {
   position: absolute;
   top: 0;
@@ -570,6 +690,7 @@ body {
   line-height: 60px;
   transition: 0.2s ease;
 }
+
 .card .input-container .bar {
   position: absolute;
   left: 0;
@@ -578,6 +699,7 @@ body {
   width: 100%;
   height: 1px;
 }
+
 .card .input-container .bar:before,
 .card .input-container .bar:after {
   content: '';
@@ -587,16 +709,20 @@ body {
   height: 2px;
   transition: 0.2s ease;
 }
+
 .card .input-container .bar:before {
   left: 50%;
 }
+
 .card .input-container .bar:after {
   right: 50%;
 }
+
 .card .button-container {
   margin: 0 60px;
   text-align: center;
 }
+
 .card .button-container button {
   outline: 0;
   cursor: pointer;
@@ -613,12 +739,14 @@ body {
   overflow: hidden;
   transition: 0.3s ease;
 }
+
 .card .button-container button span {
   position: relative;
   z-index: 1;
   color: #ddd;
   transition: 0.3s ease;
 }
+
 .card .button-container button:before {
   content: '';
   position: absolute;
@@ -633,25 +761,31 @@ body {
   opacity: 0;
   transition: 0.3s ease;
 }
+
 .card .button-container button:hover,
 .card .button-container button:active,
 .card .button-container button:focus {
   border-color: #ed2553;
 }
+
 .card .button-container button:hover span,
 .card .button-container button:active span,
 .card .button-container button:focus span {
   color: #ed2553;
+
 }
+
 .card .button-container button:active span,
 .card .button-container button:focus span {
   color: #ffffff;
 }
+
 .card .button-container button:active:before,
 .card .button-container button:focus:before {
   opacity: 1;
   transform: scale(10);
 }
+
 .card .footer {
   margin: 40px 0 0;
   color: #d3d3d3;
@@ -659,14 +793,17 @@ body {
   font-weight: 300;
   text-align: center;
 }
+
 .card .footer a {
   color: inherit;
   text-decoration: none;
   transition: 0.3s ease;
 }
+
 .card .footer a:hover {
   color: #bababa;
 }
+
 .card.alt {
   position: absolute;
   top: 40px;
@@ -684,6 +821,7 @@ body {
   /* Input */
   /* Button */
 }
+
 .card.alt .toggle {
   position: relative;
   background: #ed2553;
@@ -697,6 +835,7 @@ body {
   text-align: center;
   cursor: pointer;
 }
+
 .card.alt .toggle:before {
   content: '⌨️';
   display: inline-block;
@@ -707,6 +846,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   transform: translate(0, 0);
 }
+
 .card.alt .title,
 .card.alt .input-container,
 .card.alt .button-container {
@@ -714,11 +854,13 @@ body {
   opacity: 0;
   visibility: hidden;
 }
+
 .card.alt .title {
   position: relative;
   border-color: #ffffff;
   color: #ffffff;
 }
+
 .card.alt .title .close {
   cursor: pointer;
   position: absolute;
@@ -729,39 +871,50 @@ body {
   font-size: 58px;
   font-weight: 400;
 }
+
 .card.alt .title .close:before {
   content: '×';
 }
+
 .card.alt .input-container input {
   color: #ffffff;
 }
-.card.alt .input-container input:focus ~ label {
+
+.card.alt .input-container input:focus~label {
   color: #ffffff;
 }
-.card.alt .input-container input:focus ~ .bar:before,
-.card.alt .input-container input:focus ~ .bar:after {
+
+.card.alt .input-container input:focus~.bar:before,
+.card.alt .input-container input:focus~.bar:after {
   background: #ffffff;
 }
-.card.alt .input-container input:valid ~ label {
+
+.card.alt .input-container input:valid~label {
   color: #ffffff;
 }
+
 .card.alt .input-container label {
   color: rgba(255, 255, 255, 0.8);
 }
+
 .card.alt .input-container .bar {
   background: rgba(255, 255, 255, 0.8);
 }
+
 .card.alt .button-container button {
   width: 100%;
   background: #ffffff;
   border-color: #ffffff;
 }
+
 .card.alt .button-container button span {
   color: #ed2553;
 }
+
 .card.alt .button-container button:hover {
   background: rgba(255, 255, 255, 0.9);
 }
+
 .card.alt .button-container button:active:before,
 .card.alt .button-container button:focus:before {
   display: none;
@@ -774,6 +927,7 @@ body {
     opacity: 0;
   }
 }
+
 @keyframes buttonFadeInUp {
   0% {
     bottom: 30px;
