@@ -227,14 +227,14 @@ function personnalisation(e) {
   const newSize = document.querySelector('#size').value;
   const c = document.querySelector('#color').value;
 
-  if (newTime !== '' ) {
+  if (newTime !== '' && newTime>0) {
     updateTime(newTime);
   } 
-  if( newSize !== ''){
+  if( newSize !== '' && newSize>0){
       updateSize(newSize);
 
   }
-    updateColor(c);
+  updateColor(c);
 }
 
 /*
